@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziad Azouqah - Cybersecurity & AI Specialist</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-dark: #111827;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e5e7eb" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Profile Image */
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            display: block;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3), 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            object-fit: cover;
+            object-position: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 3px;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 12px 48px rgba(37, 99, 235, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        /* Add a subtle glow effect */
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--primary-color));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .profile-image:hover::before {
+            opacity: 0.7;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Professional frame effect */
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin: 2rem auto;
+        }
+
+        .profile-container::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, transparent 30%, rgba(37, 99, 235, 0.1) 50%, transparent 70%);
+            z-index: -2;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Hidden Analytics Panel */
+        .analytics-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .analytics-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .analytics-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 1rem;
+        }
+
+        .analytics-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .visitor-log {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .visitor-entry {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .visitor-entry:last-child {
+            border-bottom: none;
+        }
+
+        .secret-trigger {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            opacity: 0;
+        }
+
+        .secret-trigger:hover {
+            opacity: 0.1;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+        .certification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .certification-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .certification-item span {
+            flex: 1;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .certification-item .evidence-btn {
+            margin: 0;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+        }
+
+        .skill-category h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Download Buttons */
+        .download-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary-color);
+        }
+
+        .download-btn:hover {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .download-btn.secondary {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        .download-btn.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        .evidence-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .evidence-btn:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 2001;
+        }
+
+        .close:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Mobile responsiveness for modal */
+        @media (max-width: 768px) {
+            .modal {
+                padding: 10px;
+            }
+
+            .modal-content {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+
+            .modal-image {
+                max-width: 95vw;
+                max-height: 90vh;
+            }
+
+            .close {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 24px;
+            }
+        }
+        .contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // Analytics System (Hidden Feature)
+        let analytics = {
+            visits: [],
+            pageViews: 0,
+            startTime: Date.now(),
+            sections: {
+                home: 0,
+                about: 0,
+                education: 0,
+                experience: 0,
+                skills: 0,
+                projects: 0,
+                contact: 0
+            }
+        };
+
+        // Track visitor data
+        function trackVisit() {
+            const visit = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                screen: `${screen.width}x${screen.height}`,
+                language: navigator.language,
+                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                referrer: document.referrer || 'Direct',
+                id: Math.random().toString(36).substr(2, 9)
+            };
+            analytics.visits.push(visit);
+            analytics.pageViews++;
+        }
+
+        // Track section views
+        function trackSectionView(section) {
+            if (analytics.sections[section] !== undefined) {
+                analytics.sections[section]++;
+            }
+        }
+
+        // Get session duration
+        function getSessionDuration() {
+            return Math.floor((Date.now() - analytics.startTime) / 1000);
+        }
+
+        // Analytics Panel Functions
+        function showAnalytics() {
+            const panel = document.getElementById('analyticsPanel');
+            updateAnalyticsDisplay();
+            panel.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideAnalytics() {
+            const panel = document.getElementById('analyticsPanel');
+            panel.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateAnalyticsDisplay() {
+            const sessionDuration = getSessionDuration();
+            const uniqueVisitors = new Set(analytics.visits.map(v => v.userAgent)).size;
+            const avgTimePerVisit = analytics.visits.length > 0 ? sessionDuration / analytics.visits.length : 0;
+
+            // Update stats
+            document.getElementById('totalVisits').textContent = analytics.pageViews;
+            document.getElementById('uniqueVisitors').textContent = uniqueVisitors;
+            document.getElementById('sessionDuration').textContent = `${Math.floor(sessionDuration / 60)}m ${sessionDuration % 60}s`;
+            document.getElementById('avgSession').textContent = `${Math.floor(avgTimePerVisit / 60)}m ${Math.floor(avgTimePerVisit % 60)}s`;
+
+            // Update section views
+            document.getElementById('sectionViews').innerHTML = Object.entries(analytics.sections)
+                .map(([section, views]) => `<div>${section}: ${views}</div>`)
+                .join('');
+
+            // Update visitor log
+            document.getElementById('visitorLog').innerHTML = analytics.visits
+                .slice(-10)
+                .reverse()
+                .map(visit => `
+                    <div class="visitor-entry">
+                        <span>${new Date(visit.timestamp).toLocaleString()}</span>
+                        <span>${visit.language} | ${visit.timeZone}</span>
+                    </div>
+                `).join('');
+        }
+
+        // Secret access methods
+        let secretSequence = [];
+        const secretCode = ['o', 't', 't', 'o', 'm', 'a', 'n'];
+
+        function checkSecretCode(event) {
+            secretSequence.push(event.key.toLowerCase());
+            if (secretSequence.length > secretCode.length) {
+                secretSequence.shift();
+            }
+
+            if (secretSequence.join('') === secretCode.join('')) {
+                showAnalytics();
+                secretSequence = [];
+            }
+        }
+
+        // Header Component
+        function Header() {
+            return `
+                <header class="header">
+                    <div class="container">
+                        <nav class="nav">
+                            <div class="logo">Ziad Azouqah</div>
+                            <ul class="nav-links">
+                                <li><a href="#home" onclick="trackSectionView('home')">Home</a></li>
+                                <li><a href="#about" onclick="trackSectionView('about')">About</a></li>
+                                <li><a href="#education" onclick="trackSectionView('education')">Education</a></li>
+                                <li><a href="#experience" onclick="trackSectionView('experience')">Experience</a></li>
+                                <li><a href="#skills" onclick="trackSectionView('skills')">Skills</a></li>
+                                <li><a href="#projects" onclick="trackSectionView('projects')">Projects</a></li>
+                                <li><a href="#contact" onclick="trackSectionView('contact')">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+            `;
+        }
+
+        // Hero Component
+        function Hero() {
+            return `
+                <section id="home" class="hero">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="hero-title fade-in-up">Cybersecurity & AI Specialist</h1>
+                            <p class="hero-subtitle fade-in-up stagger-1">
+                                Dedicated graduate combining cybersecurity expertise with artificial intelligence to create innovative security solutions
+                            </p>
+                            <div class="profile-container fade-in-up stagger-2">
+                                <img src="Picture.jpg" alt="Ziad Azouqah - Cybersecurity & AI Specialist" class="profile-image">
+                            </div>
+                            <a href="#contact" class="cta-button fade-in-up stagger-3">Let's Connect</a>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // About Component
+        function About() {
+            return `
+                <section id="about" class="section">
+                    <div class="container">
+                        <h2 class="section-title">About Me</h2>
+                        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                            <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                                I'm a passionate cybersecurity and artificial intelligence professional with an exceptional academic track record and hands-on industry experience. Currently pursuing my Master's in AI (GPA 3.6/4) while holding a Bachelor's in Cybersecurity (GPA 3.04/4) from Asia Pacific University, Malaysia.
+                            </p>
+                            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+                                My expertise spans advanced SIEM development with NLP integration, comprehensive vulnerability assessments, and innovative AI-driven security solutions. I excel in collaborative environments, bringing together cutting-edge technology and strategic thinking to solve complex cybersecurity challenges. My graduation project showcased a revolutionary SIEM program integrating Windows Event Viewer with natural language processing for enhanced threat detection and intelligent reporting.
+                            </p>
+
+                            <!-- Achievement Stats -->
+                            <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                                <div style="text-align: center; min-width: 120px; padding: 0.5rem;">
+                                    <h3 style="color: var(--primary-color); font-size: 2.2rem; margin-bottom: 0.3rem; font-weight: 800;">19</h3>
+                                    <p style="color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;">Professional Certifications</p>
+                                </div>
+                                <div style="text-align: center; min-width: 120px; padding: 0.5rem;">
+                                    <h3 style="color: var(--primary-color); font-size: 2.2rem; margin-bottom: 0.3rem; font-weight: 800;">2</h3>
+                                    <p style="color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;">Advanced Degrees</p>
+                                </div>
+                                <div style="text-align: center; min-width: 120px; padding: 0.5rem;">
+                                    <h3 style="color: var(--primary-color); font-size: 2.2rem; margin-bottom: 0.3rem; font-weight: 800;">2+</h3>
+                                    <p style="color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;">Industry Internships</p>
+                                </div>
+                                <div style="text-align: center; min-width: 120px; padding: 0.5rem;">
+                                    <h3 style="color: var(--primary-color); font-size: 2.2rem; margin-bottom: 0.3rem; font-weight: 800;">3.6</h3>
+                                    <p style="color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;">Current GPA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Education Component
+        function Education() {
+            return `
+                <section id="education" class="section" style="background: var(--bg-secondary);">
+                    <div class="container">
+                        <h2 class="section-title">Education & Certifications</h2>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h3>🎓 Master of Science - Artificial Intelligence</h3>
+                                <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Asia Pacific University, Kuala Lumpur, Malaysia</p>
+                                <p style="color: var(--primary-color); font-weight: 600;">2024 - 2025 | GPA: 3.6/4</p>
+                                <p style="margin-top: 1rem; font-style: italic; color: var(--text-primary);">
+                                    Specialized in applied machine learning, natural language processing, computer vision, deep learning, and fuzzy logic
+                                </p>
+                                <button class="evidence-btn" onclick="openModal('Bachelor.jpg')">
+                                    📜 View Certificate
+                                </button>
+                            </div>
+                            <div class="skill-category">
+                                <h3>🎓 Bachelor of Computer Science - Cyber Security</h3>
+                                <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Asia Pacific University, Kuala Lumpur, Malaysia</p>
+                                <p style="color: var(--primary-color); font-weight: 600;">2021 - 2024 | GPA: 3.04/4</p>
+                                <p style="margin-top: 1rem; font-style: italic; color: var(--text-primary);">
+                                    Specialized in vulnerability assessment & penetration testing, advanced cyber security, ethical hacking & incident response, deep learning for intrusion detection, and advanced software security
+                                </p>
+                                <button class="evidence-btn" onclick="openModal('Bachelor.jpg')">
+                                    📜 View Certificate
+                                </button>
+                            </div>
+                        </div>
+                        <div style="margin-top: 3rem;">
+                            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Professional Certifications</h3>
+                            <div class="skills-grid">
+                                <div class="skill-category">
+                                    <h4>🔐 Cybersecurity & Security</h4>
+                                    <div class="certification-item">
+                                        <span>Security+ - CompTIA</span>
+                                        <button class="evidence-btn" onclick="openModal('Security+.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Google Cybersecurity - Coursera</span>
+                                        <button class="evidence-btn" onclick="openModal('Security+.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Cybersecurity Fundamentals - IBM</span>
+                                        <button class="evidence-btn" onclick="openModal('Cybersecurity Fundamentals - IBM.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Ethical Hacking - Udemy</span>
+                                        <button class="evidence-btn" onclick="openModal('Ethical Hacking - Udemy.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Security+ - Udemy</span>
+                                        <button class="evidence-btn" onclick="openModal('Security + - Udemy.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Security+ - STC Academy</span>
+                                        <button class="evidence-btn" onclick="openModal('Security+.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Hackers Exposed! - Udemy</span>
+                                        <button class="evidence-btn" onclick="openModal('Security+.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Elevating IT Education in Cyber Security - Techeforte</span>
+                                        <button class="evidence-btn" onclick="openModal('Security+.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>IT Revolution and Cybersecurity Trends - APU</span>
+                                        <button class="evidence-btn" onclick="openModal('IT Revolution and Cybersecurity Trends - APU.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Understanding Web Vulnerabilities Workshop - APU</span>
+                                        <button class="evidence-btn" onclick="openModal('Web Vulnerability Workshop - APU.jpg')">📜 View</button>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <h4>💻 Technical & Programming</h4>
+                                    <div class="certification-item">
+                                        <span>Cisco CCNA 200-301 - Udemy</span>
+                                        <button class="evidence-btn" onclick="openModal('CCNA - Udemy.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Network+ N10-006 - Udemy</span>
+                                        <button class="evidence-btn" onclick="openModal('Network + - Udemy.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>AWS Academy Graduate - AWS Academy</span>
+                                        <button class="evidence-btn" onclick="openModal('AWS Academy Graduate - AWS Academy Cloud.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Python Bootcamp - Udemy</span>
+                                        <button class="evidence-btn" onclick="openModal('Python - Udemy.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Data Science Bootcamp - Udemy</span>
+                                        <button class="evidence-btn" onclick="openModal('Security+.jpg')">📜 View</button>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <h4>📊 Data & Analytics</h4>
+                                    <div class="certification-item">
+                                        <span>Data Fundamentals - IBM</span>
+                                        <button class="evidence-btn" onclick="openModal('Data Fundamentals - IBM.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Data Visualization with Python - PSU</span>
+                                        <button class="evidence-btn" onclick="openModal('Data Visualization in Python - PSU.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Digital Landscape - STC Academy</span>
+                                        <button class="evidence-btn" onclick="openModal('Security+.jpg')">📜 View</button>
+                                    </div>
+                                    <div class="certification-item">
+                                        <span>Digital Marketing - STC Academy</span>
+                                        <button class="evidence-btn" onclick="openModal('Security+.jpg')">📜 View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Experience Component
+        function Experience() {
+            return `
+                <section id="experience" class="section">
+                    <div class="container">
+                        <h2 class="section-title">Professional Experience</h2>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h3>💼 Training and Operation Intern - Asia Retail Academy</h3>
+                                <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">WP. Kuala Lumpur, Malaysia • Hybrid</p>
+                                <p style="color: var(--primary-color); font-weight: 600;">October 2024 - February 2025 • 5 months</p>
+                                <p style="margin-top: 1rem; font-style: italic; color: var(--text-primary);">
+                                    Specialized in professional communication skills, team building, presentation skills, creativity & innovation, and teamwork
+                                </p>
+                                <button class="evidence-btn" onclick="openModal('AREC.jpg')">
+                                    📄 View Work Certificate
+                                </button>
+                            </div>
+                            <div class="skill-category">
+                                <h3>💼 Information Technology Intern - Retaam Solutions</h3>
+                                <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Riyadh, Saudi Arabia • On-site</p>
+                                <p style="color: var(--primary-color); font-weight: 600;">March 2023 - June 2023 • 4 months</p>
+                                <p style="margin-top: 1rem; font-style: italic; color: var(--text-primary);">
+                                    Specialized in Python programming, PowerShell scripting, project management, professional communication, and presentation skills
+                                </p>
+                                <button class="evidence-btn" onclick="openModal('Security+.jpg')">
+                                    📄 View Work Certificate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Skills Component
+        function Skills() {
+            const skillCategories = [
+                {
+                    title: "Cybersecurity Expertise",
+                    skills: ["SIEM Development", "Vulnerability Assessment & Penetration Testing", "SOC Analyst", "Endpoint Detection & Response", "Security Forensics", "Database Security", "Ethical Hacking", "CTF Competitions", "Security Software Development", "Implementation of Secure Systems"]
+                },
+                {
+                    title: "Artificial Intelligence & Data Science",
+                    skills: ["Machine Learning", "Natural Language Processing", "Computer Vision", "Deep Learning", "Fuzzy Logic", "Computational Intelligence", "Pattern Recognition", "Data Visualization", "IBM SPSS", "R Programming", "MATLAB"]
+                },
+                {
+                    title: "Programming & Development",
+                    skills: ["Python", "Java", "JavaScript", "C++", "C#", "HTML", "CSS", "SQL", "MongoDB", "Object-Oriented Programming", "Data Structure", "Algorithms", "Low Level Programming", "Web Development"]
+                },
+                {
+                    title: "Cloud & Network Infrastructure",
+                    skills: ["Cloud Computing", "Computer Networking", "System & Network Administration", "Switching & Routing Essentials", "Linux", "PowerShell", "Packet Tracer", "Operating Systems", "System Analysis & Design", "Splunk"]
+                },
+                {
+                    title: "Professional Skills",
+                    skills: ["Project Management", "Leadership", "Problem Solving", "Time Management", "Team Building", "Presentation Skills", "Research Skills", "Creativity & Innovation", "Article Writing", "Digital Thinking & Innovation"]
+                },
+                {
+                    title: "Languages & Communication",
+                    skills: ["English (Fluent)", "Arabic (Native)"]
+                }
+            ];
+
+            return `
+                <section id="skills" class="section" style="background: var(--bg-secondary);">
+                    <div class="container">
+                        <h2 class="section-title">Skills & Technologies</h2>
+                        <div class="skills-grid">
+                            ${skillCategories.map(category => `
+                                <div class="skill-category">
+                                    <h3>${category.title}</h3>
+                                    <div class="skill-tags">
+                                        ${category.skills.map(skill => `
+                                            <span class="skill-tag">${skill}</span>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Projects Component
+        function Projects() {
+            const projects = [
+                {
+                    title: "Enhancing Threat Detection using EDR and UEBA with Windows Event Viewer",
+                    description: "Designed and developed a Security Information and Event Management (SIEM) program using Windows Event Viewer for log collection with NLP integration to enhance threat detection and reporting capabilities.",
+                    tech: ["Windows Event Viewer", "EDR", "UEBA", "Threat Detection", "Security Analytics"],
+                    demo: "#",
+                    github: "#"
+                },
+                {
+                    title: "Enhancing SIEMS using NLP",
+                    description: "Advanced security information and event management system leveraging natural language processing techniques to analyze security logs, automate incident response, and provide intelligent threat classification and reporting.",
+                    tech: ["Natural Language Processing", "SIEM", "Python", "Machine Learning", "Security Analytics"],
+                    demo: "#",
+                    github: "#"
+                },
+                {
+                    title: "Using BERT and Deep Learning for Enhancing Job Screening and Application",
+                    description: "Innovative AI-powered recruitment system utilizing BERT transformer model and deep learning techniques to automate resume screening, match candidates to job requirements, and enhance the recruitment process through intelligent candidate ranking.",
+                    tech: ["BERT", "Deep Learning", "Natural Language Processing", "Python", "Machine Learning"],
+                    demo: "#",
+                    github: "#"
+                }
+            ];
+
+            return `
+                <section id="projects" class="section">
+                    <div class="container">
+                        <h2 class="section-title">Featured Projects</h2>
+                        <div class="projects-grid">
+                            ${projects.map((project, index) => `
+                                <div class="project-card">
+                                    <div class="project-image">
+                                        ${project.title.charAt(0)}
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">${project.title}</h3>
+                                        <p class="project-description">${project.description}</p>
+                                        <div class="project-tech">
+                                            ${project.tech.map(tech => `
+                                                <span class="tech-tag">${tech}</span>
+                                            `).join('')}
+                                        </div>
+                                        <div class="project-links">
+                                            <a href="${project.demo}" class="project-link">View Details</a>
+                                            <a href="${project.github}" class="project-link">Learn More</a>
+                                            <button class="evidence-btn" onclick="openModal('Security+.jpg')" style="margin-left: 0.5rem;">
+                                                📸 View Evidence
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Contact Component
+        function Contact() {
+            return `
+                <section id="contact" class="contact section">
+                    <div class="container">
+                        <div class="contact-content">
+                            <h2 class="section-title">Let's Connect</h2>
+                            <p style="font-size: 1.1rem; color: var(--text-secondary);">
+                                I'm always open to discussing cybersecurity opportunities, AI research collaborations, or consulting on innovative security solutions.
+                            </p>
+
+                            <!-- Download Section -->
+                            <div class="download-section">
+                                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📄 Download My Documents</h3>
+                                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                                    <a href="Ziad Azouqah CV.pdf" download class="download-btn">
+                                        📋 Download CV
+                                    </a>
+                                    <a href="Cover Letter.pdf" download class="download-btn secondary">
+                                        📝 Download Cover Letter
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <span>📧</span>
+                                    <a href="mailto:ziadazouqah@gmail.com">ziadazouqah@gmail.com</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span>💼</span>
+                                    <a href="https://linkedin.com/in/ziadazouqah/">LinkedIn</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span>🐙</span>
+                                    <a href="https://github.com/ziadazouqah">GitHub</a>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                                <div class="contact-item">
+                                    <span>📱</span>
+                                    <span>+966535287164</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span>📞</span>
+                                    <span>+60149225403</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: 2rem;">
+                                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📍 Locations</h3>
+                                <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                                    <div style="text-align: center; min-width: 200px;">
+                                        <p style="font-weight: 600; color: var(--text-primary);">Current</p>
+                                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Subang Jaya, Kuala Lumpur, Malaysia</p>
+                                    </div>
+                                    <div style="text-align: center; min-width: 200px;">
+                                        <p style="font-weight: 600; color: var(--text-primary);">Home Base</p>
+                                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Al Shuhadah, Riyadh, Saudi Arabia</p>
+                                    </div>
+                                    <div style="text-align: center; min-width: 200px;">
+                                        <p style="font-weight: 600; color: var(--text-primary);">Available</p>
+                                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Al Rashid, Amman, Jordan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Footer Component
+        function Footer() {
+            return `
+                <footer class="footer">
+                    <div class="container">
+                        <p>&copy; 2025 Ziad Azouqah. Cybersecurity & AI Specialist - Built with passion for innovative security solutions.</p>
+                    </div>
+                </footer>
+            `;
+        }
+
+        // Initialize the app
+        function initApp() {
+            const app = document.getElementById('app');
+            app.innerHTML = `
+                ${Header()}
+                ${Hero()}
+                ${About()}
+                ${Education()}
+                ${Experience()}
+                ${Skills()}
+                ${Projects()}
+                ${Contact()}
+                ${Footer()}
+
+                <!-- Modal for Evidence Images -->
+                <div id="evidenceModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img id="modalImage" class="modal-image" src="" alt="Evidence">
+                    </div>
+                </div>
+
+                <!-- Hidden Analytics Panel -->
+                <div id="analyticsPanel" class="analytics-panel">
+                    <div class="analytics-content">
+                        <div class="analytics-header">
+                            <h2 style="color: var(--primary-color); margin: 0;">📊 Site Analytics</h2>
+                            <button onclick="hideAnalytics()" style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Close</button>
+                        </div>
+
+                        <div class="analytics-stats">
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalVisits">0</div>
+                                <div class="stat-label">Total Page Views</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="uniqueVisitors">0</div>
+                                <div class="stat-label">Unique Visitors</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="sessionDuration">0s</div>
+                                <div class="stat-label">Session Duration</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="avgSession">0s</div>
+                                <div class="stat-label">Avg Session</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Section Views</h3>
+                            <div id="sectionViews" style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; font-family: monospace;"></div>
+                        </div>
+
+                        <div>
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Recent Visitors (Last 10)</h3>
+                            <div id="visitorLog" class="visitor-log"></div>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <strong>Access Methods:</strong><br>
+                            • Type "ottoman" anywhere on the site<br>
+                            • Click the invisible button (bottom-left corner)<br>
+                            • Triple-click your profile picture<br>
+                            <br>
+                            <strong>Note:</strong> Data resets on page refresh. For persistent analytics, integrate with Google Analytics or similar service.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secret Trigger Button -->
+                <button class="secret-trigger" onclick="showAnalytics()" title="Analytics"></button>
+            `;
+
+            // Initialize analytics tracking
+            trackVisit();
+
+            // Add event listeners after rendering
+            addEventListeners();
+            handleScrollAnimations();
+            initAnalytics();
+        }
+
+        function initAnalytics() {
+            // Secret keyboard access
+            document.addEventListener('keydown', checkSecretCode);
+
+            // Triple-click profile picture access
+            const profileImage = document.querySelector('.profile-image');
+            if (profileImage) {
+                let clickCount = 0;
+                profileImage.addEventListener('click', () => {
+                    clickCount++;
+                    setTimeout(() => { clickCount = 0; }, 500);
+                    if (clickCount === 3) {
+                        showAnalytics();
+                        clickCount = 0;
+                    }
+                });
+            }
+
+            // Track page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    trackVisit();
+                }
+            });
+
+            // Update analytics every 30 seconds
+            setInterval(() => {
+                if (document.getElementById('analyticsPanel').style.display === 'block') {
+                    updateAnalyticsDisplay();
+                }
+            }, 30000);
+        }
+
+        // Modal Functions
+        function openModal(imageSrc) {
+            const modal = document.getElementById('evidenceModal');
+            const modalImage = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImage.src = imageSrc;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('evidenceModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('evidenceModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        function addEventListeners() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(anchor.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('.header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+            });
+        }
+
+        function handleScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.skill-category, .project-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initApp);
+
+        // Make functions globally accessible
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.showAnalytics = showAnalytics;
+        window.hideAnalytics = hideAnalytics;
+        window.trackSectionView = trackSectionView;
+    </script>
+</body>
+</html>
